@@ -13,8 +13,6 @@ import { Task } from './tasks/task.entity';
     password: 'sajjad960',
     database: 'taskmanagement',
     entities: [Task],
-    synchronize: true,
-    dropSchema: true
   }),
   TasksModule,
   ],

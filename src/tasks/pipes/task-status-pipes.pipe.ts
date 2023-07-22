@@ -14,6 +14,7 @@ export class TaskStatusValidationPipe implements PipeTransform {
         if(!this.isStatusValid(value)) {
             throw new BadRequestException(`${value} is an invalid status`)
         }
+    return value;
 
     }
     

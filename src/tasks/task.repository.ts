@@ -9,15 +9,14 @@ export class TaskRepository extends Repository<Task> {
   constructor(private dataSource: DataSource) {
     super(Task, dataSource.createEntityManager());
   }
+  async createTask(createTaskDto: CreateTaskDto): Promise<Task> {
+    const {title, description} = createTaskDto;
+    const task = new Task();
+    task.title = title;
+    task.description = description;
+    task.status = TaskStatus.OPEN;
 
-  async createTask({ title, description }: CreateTaskDto): Promise<Task> {
-    const task = this.create({
-      title,
-      description,
-      status: TaskStatus.OPEN,
-    });
-
-    await this.save(task);
+    await task.save()
     return task;
-  }
+}
 }
